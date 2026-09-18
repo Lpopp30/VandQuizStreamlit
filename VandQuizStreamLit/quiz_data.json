@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Hvor mange liter vand bruger en dansker i gennemsnit om dagen?",
+    "options": [ "Ca. 50 liter", "Ca. 104 liter", "Ca. 250 liter", "Ca. 400 liter" ],
+    "answer": "Ca. 104 liter"
+  },
+  {
+    "question": "Hvilken aktivitet bruger som regel mest vand?",
+    "options": [ "At vaske op i hånden", "Bad og personlig pleje", "Tøjvask", "Madlavning" ],
+    "answer": "Bad og personlig pleje"
+  },
+  {
+    "question": "Hvilken af følgende aktiviteter bruger mindst vand?",
+    "options": [ "At vaske op i hånden", "Bad og personlig pleje", "Tøjvask", "Madlavning" ],
+    "answer": "Madlavning"
+  },
+  {
+    "question": "Spørgsmål 3: Hvor stor en del af Jorden er dækket af vand?",
+    "options": [ "Ca. 30%", "Ca. 50%", "Ca. 71%", "Ca. 95%" ],
+    "answer": "Ca. 71%"
+  }
+]
