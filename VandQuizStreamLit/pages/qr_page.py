@@ -20,7 +20,7 @@ border_size = st.sidebar.slider(
 )
 
 # Felt til URL
-default_url = "https://vandquizapp-mz5wyvntkhf9hyarhqyrnn.streamlit.app/
+default_url = "https://vandquizapp-mz5wyvntkhf9hyarhqyrnn.streamlit.app/"
 
 if default_url:
   # Generer QR-koden ved hjælp af qrcode-biblioteket
