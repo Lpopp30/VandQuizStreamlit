@@ -2,13 +2,19 @@ from io import BytesIO
 import qrcode
 import streamlit as st
 
+# 1. If "?admin=true" is NOT in the link, show a 404 error and STOP
+if st.query_params.get("admin") != "true":
+    st.error("404 - Page Not Found")
+    st.stop()  # This stops the rest of the file from running completely
+
+# --- REST OF YOUR ADMIN CODE HERE ---
+st.title("🔒 Admin Zone")
+# ... your database code, password check, download buttons, etc.
+
 # --- 3. QR-KODE GENERATOR (SIDEBAR OG BUND) ---
 st.markdown("---")
-st.header("📱 Generer QR-kode til siden")
-st.write(
-    "Indtast linket til din live hjemmeside (eller en infoside om vand), så"
-    " laves der en QR-kode:"
-)
+st.header("Generer QR-kode til Vand Quiz")
+
 
 # Indstillinger i sidebaren til QR-koden
 st.sidebar.header("QR-kode Indstillinger")
@@ -20,7 +26,8 @@ border_size = st.sidebar.slider(
 )
 
 # Felt til URL
-default_url = "https://vandquizapp-mz5wyvntkhf9hyarhqyrnn.streamlit.app/"
+#https://vandquizapp-mz5wyvntkhf9hyarhqyrnn.streamlit.app/
+default_url = "https://www.instagram.com/gnist.show/"
 
 if default_url:
   # Generer QR-koden ved hjælp af qrcode-biblioteket
@@ -44,7 +51,7 @@ if default_url:
 # Du kan f.eks. bare slette st.columns og lade QR-koden ligge direkte på siden, eller rette den til:
 col1 = st.container()
 with col1:
-  st.subheader("Genereret QR-kode:")
+  st.subheader("QR-kode:")
   st.image(byte_im, caption=f"Link: {default_url}", use_container_width=True)
 
   st.download_button(
@@ -55,4 +62,3 @@ with col1:
   )
 
 st.markdown("---")
-st.markdown("Lavet med ❤️ af dig i Streamlit & Python.")
