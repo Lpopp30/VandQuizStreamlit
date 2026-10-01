@@ -3,6 +3,9 @@ import json
 import sqlite3
 import pandas as pd
 import streamlit as st
+from email_validator import validate_email, EmailNotValidError
+
+#py -m streamlit run VandQuizStreamLit/app.py
 
 # Konfiguration af siden
 st.set_page_config(
@@ -175,14 +178,29 @@ def main():
                 cursor.execute("SELECT email FROM entries WHERE email = ?", (email,))
                 existing_user = cursor.fetchone()
 
+
+
                 if existing_user:
                     st.error("Denne e-mailadresse har allerede deltaget i quizzen!")
                 else:
-                    # Gem i session og lås quizzen op
-                    st.session_state.user_registered = True
-                    st.session_state.user_name = name
-                    st.session_state.user_email = email
-                    st.rerun()
+                    try:
+                        print(email)
+                        # Tjekker format OG om domænet har en aktiv e-mail-server (check_deliverability=True)
+                        valid = validate_email(email, check_deliverability=False)
+                        print(valid)
+                        normalized_email = valid.normalized  # Den 'rene' e-mail
+        
+                        st.success(f"E-mailen er gyldig: {normalized_email}")
+        
+                    except EmailNotValidError as e:
+                        # Vis fejlen hvis e-mailen er ugyldig eller domænet ikke findes
+                        st.error(f"Ugyldig e-mail: {str(e)}")
+                
+                # Gem i session og lås quizzen op
+                st.session_state.user_registered = True
+                st.session_state.user_name = name
+                st.session_state.user_email = email
+                st.rerun()
 
     # ---------------------------------------------------------
     # TRIN 2: Quiz Spørgsmål & Afslutning
