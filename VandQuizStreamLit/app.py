@@ -182,25 +182,27 @@ def main():
 
                 if existing_user:
                     st.error("Denne e-mailadresse har allerede deltaget i quizzen!")
-                else:
-                    try:
-                        print(email)
-                        # Tjekker format OG om domænet har en aktiv e-mail-server (check_deliverability=True)
-                        valid = validate_email(email, check_deliverability=False)
-                        print(valid)
-                        normalized_email = valid.normalized  # Den 'rene' e-mail
-        
-                        st.success(f"E-mailen er gyldig: {normalized_email}")
-        
-                    except EmailNotValidError as e:
-                        # Vis fejlen hvis e-mailen er ugyldig eller domænet ikke findes
-                        st.error(f"Ugyldig e-mail: {str(e)}")
                 
-                # Gem i session og lås quizzen op
-                st.session_state.user_registered = True
-                st.session_state.user_name = name
-                st.session_state.user_email = email
-                st.rerun()
+                try:
+                    print(email)
+                    # Tjekker format OG om domænet har en aktiv e-mail-server (check_deliverability=True)
+                    valid = validate_email(email, check_deliverability=False)
+                    print(valid)
+
+                    normalized_email = valid.normalized  # Den 'rene' e-mail
+                    print(normalized_email)
+                    st.success(f"E-mailen er gyldig: {normalized_email}")
+
+                    # Gem i session og lås quizzen op
+                    st.session_state.user_registered = True
+                    st.session_state.user_name = name
+                    st.session_state.user_email = email
+                    st.rerun()
+        
+                except EmailNotValidError as e:
+                    # Vis fejlen hvis e-mailen er ugyldig eller domænet ikke findes
+                    st.error("Ugyldig e-mail")
+                    
 
     # ---------------------------------------------------------
     # TRIN 2: Quiz Spørgsmål & Afslutning
