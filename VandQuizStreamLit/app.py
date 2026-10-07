@@ -63,7 +63,7 @@ st.markdown(
 # Connection String til SQLite
 conn = sqlite3.connect("quiz_entries.db", check_same_thread=False)
 cursor = conn.cursor()
-cursor.execute("DROP TABLE IF EXISTS entries")
+#cursor.execute("DROP TABLE IF EXISTS entries")
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS entries (
         email TEXT PRIMARY KEY,
