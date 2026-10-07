@@ -1,5 +1,6 @@
 Flask>=2.2.3
 streamlit
+pandas
 qrcode[pil]
 st-gsheets-connection
 email-validator

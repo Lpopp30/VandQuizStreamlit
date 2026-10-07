@@ -10,6 +10,16 @@
     "answer": "Bad og personlig pleje"
   },
   {
+    "question": "Hvor stor en andel af Jordens samlede vandmængde er ferskvand, som vi kan drikke?",
+    "options": [ "Ca. 2,5%", "Ca. 15%", "Ca. 35%", "Ca. 50%" ],
+    "answer": "Ca. 2,5%"
+  },
+  {
+    "question": "Hvad hedder den proces, hvor saltvand omdannes til drikkevand?",
+    "options": [ "Kondensering", "Afsaltning (desalinering)", "Filtrering", "Fordampning" ],
+    "answer": "Afsaltning (desalinering)"
+  },
+  {
     "question": "Hvilken af følgende aktiviteter bruger mindst vand?",
     "options": [ "At vaske op i hånden", "Bad og personlig pleje", "Tøjvask", "Madlavning" ],
     "answer": "Madlavning"
